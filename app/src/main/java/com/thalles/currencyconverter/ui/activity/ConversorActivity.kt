@@ -48,7 +48,9 @@ class ConversorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
             conversorViewModel.converter(valor, spinner2.selectedItem.toString())
         }
 
-        conversorViewModel.moedaBase = Currency.getInstance(Locale.getDefault()).currencyCode
+        conversorViewModel.moedaBase =
+                if (conversorViewModel.moedaBase.isNotEmpty()) conversorViewModel.moedaBase
+                else Currency.getInstance(Locale.getDefault()).currencyCode
     }
 
     /***** callbacks spinners *****/
